@@ -7,4 +7,10 @@ docker-compose up
 
 // after making models
 docker-compose run drf python manage.py makemigrations
-docker-compose run drf python manage.py migrate 
+docker-compose run drf python manage.py migrate
+
+//making user
+docker-compose run drf python manage.py createsuperuser
+
+//test
+ coverage run --omit='*/venv/*' manage.py test
