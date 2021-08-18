@@ -1,0 +1,10 @@
+docker-compose build  
+docker-compose run drf django-admin startproject core .  
+docker-compose run drf python manage.py startapp blog       
+docker-compose run drf python manage.py startapp blog_api
+docker-compose up
+
+
+// after making models
+docker-compose run drf python manage.py makemigrations
+docker-compose run drf python manage.py migrate 
