@@ -8,3 +8,16 @@ services:
       - 8080:8080
     volumes:
       - ./:/usr/app
+  frontend:
+    build: ./frontend
+    command: ["npm", "start"]
+    volumes:
+      - ./frontend:/usr/app/frontend
+      - node-modules:/usr/app/frontend/node_modules
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+
+volumes:
+  node-modules:
