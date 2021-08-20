@@ -1,3 +1,4 @@
-django==2.1.5
+django==2.2
 djangorestframework
 coverage
+django-cors-headers==3.5.0

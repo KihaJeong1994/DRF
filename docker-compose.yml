@@ -12,12 +12,15 @@ services:
     build: ./frontend
     command: ["npm", "start"]
     volumes:
-      - './frontend:/usr/app/frontend'
-      - '/usr/app/frontend/node_modules'
+      - "./frontend:/usr/app/frontend"
+      - "/usr/app/frontend/node_modules"
     ports:
       - "3000:3000"
     stdin_open: true
     tty: true
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
 
 volumes:
   node-modules:

@@ -14,3 +14,5 @@ docker-compose run drf python manage.py createsuperuser
 
 //test
  coverage run --omit='*/venv/*' manage.py test
+
+ 
