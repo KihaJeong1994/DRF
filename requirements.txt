@@ -3,3 +3,4 @@ djangorestframework
 coverage
 django-cors-headers==3.5.0
 djangorestframework-simplejwt
+drf_social_oauth2

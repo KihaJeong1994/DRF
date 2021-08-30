@@ -16,3 +16,4 @@ docker-compose run drf python manage.py createsuperuser
  coverage run --omit='*/venv/*' manage.py test
 
  
+ curl -X POST -d "client_id=XAHf0teni4NxWTMZni4gBBzAhAHHulSqyp6pm4Ab&client_secret=RJC3PxylP9ekaHdUnaECUF6xbz6xsgm3KgXJn7di1Fx8VcVf08JvWTpUJD8Y4pBrvE9E4teLf5nQcgSo3ovPpBXE2x8zg8p7npsIRFGvcfdthYtLIbjK30nhwB6y1mtO&grant_type=password&username=a@a.com&password=aaaa" http://localhost:8080/auth/token

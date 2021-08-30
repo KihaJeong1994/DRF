@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axiosInstance from '../axios';
+import axiosInstance from '../axios/login';
 import { useHistory } from 'react-router-dom';
 //MaterialUI
 import Avatar from '@material-ui/core/Avatar';
@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import GoogleLogin from 'react-google-login';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -33,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(3, 0, 2),
 	},
 }));
+
+const responseGoogle = (response) => {
+	console.log(response);
+  }
 
 export default function SignIn() {
 	const history = useHistory();
@@ -55,15 +60,18 @@ export default function SignIn() {
 		console.log(formData);
 
 		axiosInstance
-			.post(`token/`, {
-				email: formData.email,
+			.post(`auth/token`, {
+				grant_type : 'password',
+				username: formData.email,
 				password: formData.password,
+				client_id : 'XAHf0teni4NxWTMZni4gBBzAhAHHulSqyp6pm4Ab',
+				client_secret : 'RJC3PxylP9ekaHdUnaECUF6xbz6xsgm3KgXJn7di1Fx8VcVf08JvWTpUJD8Y4pBrvE9E4teLf5nQcgSo3ovPpBXE2x8zg8p7npsIRFGvcfdthYtLIbjK30nhwB6y1mtO',
 			})
 			.then((res) => {
-				localStorage.setItem('access_token', res.data.access);
-				localStorage.setItem('refresh_token', res.data.refresh);
+				localStorage.setItem('access_token', res.data.access_token);
+				localStorage.setItem('refresh_token', res.data.refresh_token);
 				axiosInstance.defaults.headers['Authorization'] =
-					'JWT ' + localStorage.getItem('access_token');
+					'Bearer ' + localStorage.getItem('access_token');
 				history.push('/');
 				//console.log(res);
 				//console.log(res.data);
@@ -119,6 +127,7 @@ export default function SignIn() {
 					>
 						Sign In
 					</Button>
+					
 					<Grid container>
 						<Grid item xs>
 							<Link href="#" variant="body2">
